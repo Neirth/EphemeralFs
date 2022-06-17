@@ -1,11 +1,14 @@
 {
-  "name": "ephemeralfs",
+  "name": "@Neirth/ephemeralfs",
   "version": "1.0.0",
   "description": "A Ephemeral FS for Web Environment",
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Neirth/EphemeralFS"
+  },
+  "publishConfig": {
+    "registry":"https://npm.pkg.github.com"
   },
   "keywords": [
     "Ephemeral",

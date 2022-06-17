@@ -12,8 +12,6 @@ class FileSystem {
 
         // Read all tar entries
         this.__readArchiveEntries();
-        console.log(JSON.stringify(this.__inodes))
-
     }
 
     get name() {
