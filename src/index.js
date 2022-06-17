@@ -3,15 +3,7 @@ import { loadFetchPolyfill } from "./polyfills/FetchPolyfill.js";
 import { loadXMLHttpRequestPolyfill } from "./polyfills/XMLHttpRequestPolyfill.js";
 import * as fzstd from 'fzstd';
 
-Blob.prototype.toURL = function () {
-    if (this.__uriGenerated === undefined) {
-        this.__uriGenerated = URL.createObjectURL(this);
-    }
-
-    return this.__uriGenerated;
-}
-
-export class FileSystem {
+class FileSystem {
     constructor(name, arrayBuffer) {
         // Read the file container
         this.__name = name;
@@ -22,11 +14,6 @@ export class FileSystem {
         this.__readArchiveEntries();
         console.log(JSON.stringify(this.__inodes))
 
-        // Load polyfills to support custom schema
-        loadFetchPolyfill(this);
-        loadXMLHttpRequestPolyfill(this);
-
-        window.requestVirtualFs = this;
     }
 
     get name() {
@@ -176,3 +163,5 @@ export class FileSystem {
         return textDecoder.decode(binaryStr.slice(0, zeroIndexOf));
     }
 }
+
+export { loadFetchPolyfill, loadXMLHttpRequestPolyfill, FileSystem }

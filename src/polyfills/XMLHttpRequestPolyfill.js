@@ -1,9 +1,9 @@
 export const loadXMLHttpRequestPolyfill = (filesystem) => {
     XMLHttpRequest.prototype.__open = XMLHttpRequest.prototype.open;
 
-    XMLHttpRequest.prototype.open = function(uri, options) {
+    XMLHttpRequest.prototype.open = function(method, url, async, user, password) {
         // Deference the weak reference
-        const realFilesystem = window.requestVirtualFs();
+        const realFilesystem = filesystem;
 
         // Check if the filesystem is not cleaned reference
         if (uri.startsWith('efs:' + window.location.origin + "/" + realFilesystem.name)) {

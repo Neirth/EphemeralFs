@@ -1,9 +1,9 @@
 export const loadFetchPolyfill = (filesystem) => {
     window.oldFetch = window.fetch;
-
+    
     window.fetch = function(uri, options) {
         // Deference the weak reference
-        const realFilesystem = window.requestVirtualFs;
+        const realFilesystem = filesystem;
 
         // Check if the filesystem is not cleaned reference
         if (uri.startsWith('efs:' + window.location.origin + "/" + realFilesystem.name)) {
