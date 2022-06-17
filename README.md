@@ -8,10 +8,10 @@ This project came out of the thought of being able to do file and directory trav
 
 As this standard defines, it only allows loading of binary data, allowing this if working under a new scheme 'blob:'.
 
-This library exploits this potential in combination with other technologies such as Unix's Tar archivers and Facebook's Zsfd compression algorithm.
+This library exploits this potential in combination with other technologies such as Unix's Tar archivers and Facebook's Zstd compression algorithm.
 
 ## Concepts
- * **Chunk**: Information container with a preloaded, read-only file structure
+ * **Chunk**: Information container with a preloaded, read-only file structure, in .tar.zst format
  * **On-fly Descompression**: Ability to obtain information from the compressed chunk to expose it in a URL with the 'blob:' scheme.
 
 ## Installation
