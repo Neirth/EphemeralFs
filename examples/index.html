@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script>
+        const loadFile = (file) => new Promise((resolve, reject) => {
+            let reader = new FileReader();
+
+            reader.onload = (event) => resolve(event.target.result);
+
+            reader.readAsArrayBuffer(file);
+        });
+        
+        async function load() {
+            const filesystemClass = await import("../src/index.js");
+            let $elem = document.getElementById("tar-file-input");
+            let tarFile = $elem.files[0];
+            let $fileList = document.getElementById('file-list');
+            $fileList.innerHTML = "";
+
+            fileArrayBuffer = await loadFile(tarFile);
+
+            let filesystem = new filesystemClass.FileSystem("example", fileArrayBuffer);
+
+            for (let file of filesystem.readdir("Practica/epsa_smarazn_upv_p1_analysis/")) {
+                console.log(file);
+                if (file.type === "file") {
+                    console.log(filesystem.readfile(file.name).toURL())
+                }
+            }
+
+            console.log("Loaded!")
+        }
+    </script>
+</head>
+
+<body>
+    <h1>tarballjs</h1>
+    <hr />
+    <h2>Read .tar</h2>
+    <p>File to extract: <input type="file" id="tar-file-input" onchange="load();" /><input type="button" value="Extract"
+            onclick="load();" /></p>
+    <br />
+    <p>Files:</p>
+    <ul id="file-list">
+    </ul>
+    </p>
+    <hr />
+    <a href="https://github.com/ankitrohatgi/tarballjs">https://github.com/ankitrohatgi/tarballjs</a>
+</body>
+
+</html>

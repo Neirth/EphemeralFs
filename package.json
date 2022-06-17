@@ -1,0 +1,24 @@
+{
+  "name": "ephemeralfs",
+  "version": "1.0.0",
+  "description": "A Ephemeral FS for Web Environment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "."
+  },
+  "keywords": [
+    "Ephemeral",
+    "FileSystem",
+    "Web",
+    "Environment"
+  ],
+  "author": "Neirth",
+  "license": "MIT",
+  "dependencies": {
+    "fzstd": "^0.0.4"
+  }
+}
